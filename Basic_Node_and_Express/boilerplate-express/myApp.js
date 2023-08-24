@@ -9,11 +9,11 @@ app.use((req, res, next) => {
     next();
 })
 
+app.use('/public', express.static(__dirname+'/public'));
+
 app.get('/', (request, response) => {
     response.sendFile(__dirname + '/views/index.html');
 });
-
-app.use('/public', express.static(__dirname+'/public'));
 
 app.get('/json', (request, response) => {
     if(process.env.MESSAGE_STYLE === 'uppercase'){
@@ -23,6 +23,11 @@ app.get('/json', (request, response) => {
     };
 });
 
-
+app.get('/now', (req, res, next) => {
+    req.time = new Date().toString();
+    next();
+}, (req, res) => {
+    res.json({"time" : req.time});
+});
 
 module.exports = app;
