@@ -2,7 +2,7 @@ require('dotenv').config();
 let express = require('express');
 let app = express();
 
-//app.listen(3000);
+app.listen(3000);
 
 app.use((req, res, next) => {
     console.log(req.method + " " + req.path + " - " + req.ip);
