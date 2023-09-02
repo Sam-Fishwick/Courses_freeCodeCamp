@@ -6,6 +6,7 @@ const { MongoClient } = require('mongodb');
 const dns = require('dns');
 const urlparser = require('url');
 
+console.log(process.env.MY_URI)
 const client = new MongoClient(process.env.MY_URI);
 const db = client.db('db_short_url');
 const collection = db.collection('collection_short_url');
